@@ -2,12 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 @layer base {
-    html {
+    body {
         font-family: "Exo 2", sans-serif;
         font-optical-sizing: auto;
         font-weight: 500;
         font-style: normal;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
     }
+
+    .background-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-size: 400% 400%;
+        animation: gradientAnimation 15s ease infinite;
+        z-index: -1; /* Moves the background layers behind other content */
+      }
+    
+      .layer1 {
+        background-image: linear-gradient(-45deg, #222121, #0a0406, #0c2027, #395f5f);
+      }
+    
+      .layer2 {
+        background-image: linear-gradient(45deg, #050505, #2b1c1c, #37353a, #172427);
+        animation-delay: 5s; 
+      }
+    
+      .layer3 {
+        background-image: linear-gradient(90deg, #1d181a, #16120e, #5f6363, #0d0d0e);
+        animation-delay: 10s; 
+      }
+    
+      h1 {
+        animation: textAnimation 5s ease-in-out infinite alternate;
+        position: relative; 
+        z-index: 1; 
+      }
+    
+      @keyframes gradientAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    
+      @keyframes textAnimation {
+        0% {
+          transform: translateX(-50px) scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(50px) scale(1.2);
+          opacity: 1;
+        }
+      }
 
     .container{
         background-color: rgb(15, 15, 15);
@@ -17,14 +74,14 @@
         border-radius: 25px;
         border: 2px solid rgb(59, 59, 59);
     }
-    
+
     .container:hover{
-        background-image: linear-gradient(to bottom right, #111010 30%, rgba(8, 6, 6, 0.397) 50%);
-        transition: all 10s;
+        background-color: rgb(39, 38, 38);
+        transition: 10s all;
     }
     
     .random-btn:hover{
-        background-color: rgb(39, 38, 38);
+        background-color: rgb(14, 13, 13);
         box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5),
         inset 5px 5px 20px rgba(255, 255, 255, 0.2),
         inset -5px -5px 15px rgba(0, 0, 0, 0.75);

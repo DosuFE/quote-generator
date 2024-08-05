@@ -5,32 +5,64 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Quote Generator</title>
   <link rel="stylesheet" href="output.css">
+  <link rel="shortcut icon" href="./images/quote.png" type="image/x-icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
-<body class="flex items-center justify-center min-h-screen bg-black">
-    <main class="container inline-block bg-black w-auto py-8 sm:px-40  mx-5">
-        <h1 class="text-2xl font-bold mb-4 text-center text-slate-300">Random Quote Generator</h1>
-        <div id="quote" class="
-            text-lg italic text-gray-300 mb-6 text-center
-            md:max-w-96
-        ">
-            <p>"A set of white teeth, does not indicate a pure heart" - DSGS</p>
-        </div>
-        <div class="flex justify-center space-x-4">
-            <button id="quoteButton" class="random-btn bg-transparent text-white font-semibold px-4 py-2
-            border-2 border-slate-400 rounded-3xl mt-3 uppercase">Get Quote</button>
-            <a id="whatsappShare" class=" text-sm sm:text-lg
-                random-btn bg-transparent text-white font-semibold px-3 py-2
-                border-2 border-slate-400 rounded-3xl mt-3 uppercase" rel="noopener noreferrer
-            ">
-                Share on WhatsApp
-            </a>
-        </div>
-    </main>
+<body class="flex  flex-col items-center 
+justify-center gap-7
+"> 
 
+  <div class="background-layer layer1"></div>
+  <div class="background-layer layer2"></div>
+  <div class="background-layer layer3"></div>
+  <h1 class="text-white text-3xl md:text-5xl lg:text-7xl"> 
+    QUOTE GENERATOR
+  </h1>
+  <main class="container inline-block bg-[#161616] w-auto py-8 sm:px-40 mx-5
+    ">
+    <!-- RANDOM QUOTE SECTION -->
+    <h2 class="text-2xl font-bold mb-4 text-center text-slate-300 italic">
+      Random Quote Generator
+    </h2>
+    <div id="quote" class="
+     text-gray-300 mb-6 text-center
+      md:max-w-lg
+    ">
+      <p class="text-lg italic">
+        "Success is not a destination but a journey. Expect uncertainty" - JB
+      </p>
+    </div>
+    <!-- QUOTE BUTTON -->
+    <div class="flex flex-col items-center justify-center 
+    space-y-5 px-3 md:space-x-4 md:flex-row md:px-0
+    ">
+      <!-- GET QUOTE BUTTON -->
+      <button id="quoteButton" class="random-btn italic
+      bg-transparent text-white font-semibold
+      border-2 border-slate-400 rounded-xl w-full 
+      py-2 md:w-48 md:rounded-full md:mt-5
+      ">
+        Get Quote
+      </button>
+      <!-- SHARE QUOTE TO WHATSAPP -->
+      <button class="random-btn italic
+      bg-transparent text-white font-semibold
+      border-2 border-slate-400 rounded-xl w-full 
+      py-2 md:w-48 md:rounded-full
+      " >
+        <a id="whatsappShare" 
+        rel="noopener noreferrer
+        ">
+          Share on WhatsApp
+        </a>
+      </button>
+    </div>
+  </main>
+
+  <!-- SCRIPT FOR QUOTE API -->
   <script>
     document.getElementById('quoteButton').addEventListener('click', async () => {
       try {

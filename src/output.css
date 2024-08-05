@@ -446,11 +446,72 @@ video {
   display: none;
 }
 
-html {
+body {
   font-family: "Exo 2", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.background-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  z-index: -1;
+  /* Moves the background layers behind other content */
+}
+
+.layer1 {
+  background-image: linear-gradient(-45deg, #222121, #0a0406, #0c2027, #395f5f);
+}
+
+.layer2 {
+  background-image: linear-gradient(45deg, #050505, #2b1c1c, #37353a, #172427);
+  animation-delay: 5s;
+}
+
+.layer3 {
+  background-image: linear-gradient(90deg, #1d181a, #16120e, #5f6363, #0d0d0e);
+  animation-delay: 10s;
+}
+
+h1 {
+  animation: textAnimation 5s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes textAnimation {
+  0% {
+    transform: translateX(-50px) scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(50px) scale(1.2);
+    opacity: 1;
+  }
 }
 
 .container{
@@ -463,12 +524,12 @@ html {
 }
 
 .container:hover{
-  background-image: linear-gradient(to bottom right, #111010 30%, rgba(8, 6, 6, 0.397) 50%);
-  transition: all 10s;
+  background-color: rgb(39, 38, 38);
+  transition: 10s all;
 }
 
 .random-btn:hover{
-  background-color: rgb(39, 38, 38);
+  background-color: rgb(14, 13, 13);
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5),
         inset 5px 5px 20px rgba(255, 255, 255, 0.2),
         inset -5px -5px 15px rgba(0, 0, 0, 0.75);
@@ -630,10 +691,6 @@ html {
   margin-bottom: 1.5rem;
 }
 
-.mt-3 {
-  margin-top: 0.75rem;
-}
-
 .inline-block {
   display: inline-block;
 }
@@ -650,6 +707,14 @@ html {
   width: auto;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
 }
@@ -658,14 +723,22 @@ html {
   justify-content: center;
 }
 
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+.gap-5 {
+  gap: 1.25rem;
 }
 
-.rounded-3xl {
-  border-radius: 1.5rem;
+.gap-7 {
+  gap: 1.75rem;
+}
+
+.space-y-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
 }
 
 .border-2 {
@@ -677,9 +750,9 @@ html {
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-.bg-black {
+.bg-\[\#161616\] {
   --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+  background-color: rgb(22 22 22 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -689,11 +762,6 @@ html {
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-}
-
-.px-4 {
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .py-2 {
@@ -715,14 +783,14 @@ html {
   line-height: 2rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .font-bold {
@@ -731,10 +799,6 @@ html {
 
 .font-semibold {
   font-weight: 600;
-}
-
-.uppercase {
-  text-transform: uppercase;
 }
 
 .italic {
@@ -761,16 +825,50 @@ html {
     padding-left: 10rem;
     padding-right: 10rem;
   }
-
-  .sm\:text-lg {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
 }
 
 @media (min-width: 768px) {
-  .md\:max-w-96 {
-    max-width: 24rem;
+  .md\:mt-5 {
+    margin-top: 1.25rem;
+  }
+
+  .md\:w-48 {
+    width: 12rem;
+  }
+
+  .md\:max-w-lg {
+    max-width: 32rem;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:space-x-4 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1rem * var(--tw-space-x-reverse));
+    margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  .md\:rounded-full {
+    border-radius: 9999px;
+  }
+
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
   }
 }
 
